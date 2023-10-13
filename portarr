@@ -1,0 +1,98 @@
+server {
+
+    listen 80;
+
+    server_name 192.168.0.80;  # Replace with your domain/subdomain
+
+    access_log /var/log/nginx/media.access;
+    error_log /var/log/nginx/media.error;
+
+    location / {
+        root /opt/html/mediamanager.example.com;  # Serve your website content
+        index index.html;
+    }
+
+    location /transmission/ {
+        access_log /var/log/nginx/transmission.access;
+        error_log /var/log/nginx/media.error;
+        proxy_pass http://192.168.0.11:9091;
+    }
+
+    location ^~ /radarr {
+        access_log /var/log/nginx/radarr.access;
+        error_log /var/log/nginx/media.error;
+        proxy_pass http://192.168.0.96:7878;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+    }
+
+    location ^~ /radarr/api {
+        auth_basic off;
+        proxy_pass http://192.168.0.96:7878;
+    }
+
+    location ^~ /prowlarr {
+        access_log /var/log/nginx/prowlarr.access;
+        error_log /var/log/nginx/media.error;
+        proxy_pass http://192.168.0.96:9696;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+    }
+
+    location ^~ /prowlarr(/[0-9]+)?/api {
+        auth_basic off;
+        proxy_pass http://192.168.0.96:9696;
+    }
+
+    location ^~ /sonarr {
+        access_log /var/log/nginx/sonarr.access;
+        error_log /var/log/nginx/media.error;
+        proxy_pass http://192.168.0.96:8989;
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+    }
+
+    location ^~ /sonarr/api {
+        auth_request off;
+        proxy_pass http://192.168.0.96:8989;
+    }
+
+    location ^~ /lidarr {
+        access_log /var/log/nginx/lidarr.access;
+        error_log /var/log/nginx/media.error;
+        proxy_pass http://192.168.0.96:8686;
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+    }
+
+    location ^~ /lidarr/api {
+        auth_request off;
+        proxy_pass http://192.168.0.96:8686;
+    }
+
+}
+
