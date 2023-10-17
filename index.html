@@ -1,21 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<script>
+    function One() {
+        $("#theframe").attr('src', "http://192.168.0.80/transmission/web/");
+    }
+
+    function Two() {
+        $("#theframe").attr('src', "http://192.168.0.80/prowlarr");
+    }
+
+    function Three() {
+        $("#theframe").attr('src', "http://192.168.0.80/sonarr");
+    }
+
+    function Four() {
+        $("#theframe").attr('src', "http://192.168.0.80/radarr");
+    }
+
+    function Five() {
+        $("#theframe").attr('src', "http://192.168.0.80/lidarr");
+    }
+</script>
+
+
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Media Portal</title>
-</head>
-<body>
-    <div class="navbar">
-        <button id="transmissionButton" class="navButton" data-url="/transmission/web/" data-title="Transmission" data-bg-color="#dddddd">Transmission</button>
-        <button id="prowlarrButton" class="navButton" data-url="/prowlarr" data-title="Prowlarr" data-bg-color="#2a2a2a">Prowlarr</button>
-        <button id="radarrButton" class="navButton" data-url="/radarr" data-title="Radarr" data-bg-color="#464b51">Radarr</button>
-        <button id="lidarrButton" class="navButton" data-url="/lidarr" data-title="Lidarr" data-bg-color="#00a65b">Lidarr</button>
-        <button id="sonarrButton" class="navButton" data-url="/sonarr" data-title="Sonarr" data-bg-color="#2193b5">Sonarr</button>
-    </div>
-    <iframe id="contentFrame" src=""></iframe>
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- FAVICON -->
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.png' />
+    <!-- My Styles -->
+    <link href="styles.css" rel="stylesheet">
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="holder">
+        <div id="bt-container">
+            <button type="button" id="bt1" onclick="One();">
+                <img src="http://192.168.0.80/transmission/web/style/transmission/images/logo.png" />
+            </button>
+            <button type="button" id="bt2" onclick="Two();">
+                <img src="http://192.168.0.80/prowlarr/Content/Images/logo.svg" />
+            </button>
+            <button type="button" id="bt3" onclick="Three();">
+                <img src="http://192.168.0.80/sonarr/Content/Images/logo.svg" />
+            </button>
+            <button type="button" id="bt4" onclick="Four();">
+                <img src="http://192.168.0.80/radarr/Content/Images/logo.svg" />
+            </button>
+            <button type="button" id="bt5" onclick="Five();">
+                <img src="http://192.168.0.80/lidarr/Content/Images/logo.svg" />
+            </button>
+        </div>
+        <iframe src="http://192.168.0.80/transmission/web/" id="theframe" frameborder="1" allowfullscreen></iframe>
+    </div>
+
+</body>
+
+</html>
