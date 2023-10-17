@@ -2,23 +2,23 @@
 
 <script>
     function One() {
-        $("#theframe").attr('src', "http://192.168.0.80/transmission/web/");
+        $("#theframe").attr('src', "/transmission/web/");
     }
 
     function Two() {
-        $("#theframe").attr('src', "http://192.168.0.80/prowlarr");
+        $("#theframe").attr('src', "/prowlarr");
     }
 
     function Three() {
-        $("#theframe").attr('src', "http://192.168.0.80/sonarr");
+        $("#theframe").attr('src', "/sonarr");
     }
 
     function Four() {
-        $("#theframe").attr('src', "http://192.168.0.80/radarr");
+        $("#theframe").attr('src', "/radarr");
     }
 
     function Five() {
-        $("#theframe").attr('src', "http://192.168.0.80/lidarr");
+        $("#theframe").attr('src', "/lidarr");
     }
 </script>
 
@@ -44,22 +44,22 @@
     <div class="holder">
         <div id="bt-container">
             <button type="button" id="bt1" onclick="One();">
-                <img src="http://192.168.0.80/transmission/web/style/transmission/images/logo.png" />
+                <img src="/transmission/web/style/transmission/images/logo.png" />
             </button>
             <button type="button" id="bt2" onclick="Two();">
-                <img src="http://192.168.0.80/prowlarr/Content/Images/logo.svg" />
+                <img src="/prowlarr/Content/Images/logo.svg" />
             </button>
             <button type="button" id="bt3" onclick="Three();">
-                <img src="http://192.168.0.80/sonarr/Content/Images/logo.svg" />
+                <img src="/sonarr/Content/Images/logo.svg" />
             </button>
             <button type="button" id="bt4" onclick="Four();">
-                <img src="http://192.168.0.80/radarr/Content/Images/logo.svg" />
+                <img src="/radarr/Content/Images/logo.svg" />
             </button>
             <button type="button" id="bt5" onclick="Five();">
-                <img src="http://192.168.0.80/lidarr/Content/Images/logo.svg" />
+                <img src="/lidarr/Content/Images/logo.svg" />
             </button>
         </div>
-        <iframe src="http://192.168.0.80/transmission/web/" id="theframe" frameborder="1" allowfullscreen></iframe>
+        <iframe src="/transmission/web/" id="theframe" frameborder="1" allowfullscreen></iframe>
     </div>
 
 </body>
